@@ -32,18 +32,16 @@ train3 <- train[sample(nrow(train), 600000),]
 train4 <- train[sample(nrow(train), 800000),]
 train5 <- train[sample(nrow(train), 1000000),]
 train6 <- train[sample(nrow(train), 1200000),]
-train7 <- train[sample(nrow(train), 1400000),]
-train8 <- train[sample(nrow(train), 1600000),]
-train9 <- train[sample(nrow(train), 1800000),]
-train10 <- train[sample(nrow(train), 2000000),]
-train11 <- train[sample(nrow(train), 3000000),]
-train12 <- train[sample(nrow(train), 4000000),]
-train13 <- train[sample(nrow(train), 7000000),]
-train14 <- train[sample(nrow(train), 10000000),]
+train7 <- train[sample(nrow(train), 1600000),]
+train8 <- train[sample(nrow(train), 1800000),]
+train9 <- train[sample(nrow(train), 2000000),]
+train10 <- train[sample(nrow(train), 4000000),]
+train11 <- train[sample(nrow(train), 7000000),]
+train12 <- train[sample(nrow(train), 10000000),]
 
-n_values <- c(200000,400000,600000,800000,1000000,1200000,1400000,
-              1600000,1800000,2000000,3000000, 4000000, 7000000, 10000000)
-k_values <- c(2,4,6,8,10,12,14,16,18,20,22,24,26,28)
+n_values <- c(200000,400000,600000,800000,1000000,1200000,
+              1600000,1800000,2000000, 4000000, 7000000, 10000000)
+k_values <- c(2,4,6,8,10,12,14,16,18,20,22,24)
 model_formula <- as.formula(Device ~ X + Y + Z)
 
 n <- c()
@@ -102,5 +100,6 @@ avg_df <- data.frame(n_values,as.factor(k), avg_run)
 avg_runtime_plot <- ggplot(avg_df, aes(x=n_values, y=avg_run)) +
   geom_point( col="red") 
 avg_runtime_plot
+ggsave(filename="Vickie_Ip_avg.png", width=16, height = 9)
 
 #Based on the avg_runtime_plot, it seems like runtime is roughly Big0(n^2)
